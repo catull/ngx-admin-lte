@@ -1,8 +1,10 @@
-
 // based on https://github.com/ng-book/angular2-rxjs-chat/blob/master/app/ts/services/NotificationsService.ts
-import { Notification } from '../models/notification';
 import { Injectable } from '@angular/core';
-import { Observable, Subject, ReplaySubject } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { Subject } from 'rxjs/Subject';
+
+import { Notification } from '../models/notification';
 
 const initialNotifications: Notification[] = [];
 
@@ -28,7 +30,7 @@ export class NotificationsService {
 
   constructor() {
     // recois des operation, et les fais sur la liste interne, puis diffuse le resultat sur notifications
-    this.updates.subscribe((ope) => {
+    this.updates.subscribe(ope => {
       this.notificationsList = ope(this.notificationsList);
       console.log(this.notificationsList);
       this.notifications.next(this.notificationsList);
@@ -41,12 +43,10 @@ export class NotificationsService {
         };
       })
       .subscribe(this.updates);
-
   }
 
   // an imperative function call to this action stream
   public addNotification(notification: Notification): void {
     this.newNotifications.next(notification);
   }
-
 }

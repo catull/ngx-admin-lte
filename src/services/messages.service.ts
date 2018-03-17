@@ -2,7 +2,9 @@
 import { User } from '../models/user';
 import { Message } from '../models/message';
 import { Injectable } from '@angular/core';
-import { Observable, Subject, ReplaySubject } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { Subject } from 'rxjs/Subject';
 
 const initialMessages: Message[] = [];
 
@@ -28,7 +30,7 @@ export class MessagesService {
 
   constructor() {
     // recois des operation, et les fais sur la liste interne, puis diffuse le resultat sur messages
-    this.updates.subscribe((ope) => {
+    this.updates.subscribe(ope => {
       this.messagesList = ope(this.messagesList);
       console.log(this.messagesList);
       this.messages.next(this.messagesList);
@@ -41,12 +43,10 @@ export class MessagesService {
         };
       })
       .subscribe(this.updates);
-
   }
 
   // an imperative function call to this action stream
   public addMessage(message: Message): void {
     this.newMessages.next(message);
   }
-
 }

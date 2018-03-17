@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
-import { HttpModule, Http } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { ToasterModule, ToasterService } from 'angular2-toaster/angular2-toaster';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory (httpClient) {
@@ -71,10 +70,9 @@ import { LayoutRegisterComponent } from './layouts/register/register.component';
   ],
   imports: [
     BrowserModule,
-    HttpModule,
+    HttpClientModule,
     RouterModule,
     ToasterModule,
-    HttpClientModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

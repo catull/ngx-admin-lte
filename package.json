@@ -12,12 +12,15 @@
   "scripts": {
     "lint": "tslint --config tslint.json --project tsconfig.json",
     "transpile": "ng-packagr -p package.json",
-    "build": "npm run lint && npm run transpile && cp -r src/public dist/public && cp src/style.css dist/",
+    "build": "npm run lint && npm run transpile && cp -r src/public dist/public && cp src/styles.css dist/",
     "compodoc": "./node_modules/.bin/compodoc -p tsconfig.json --output docs",
     "package": "npm run build && cd dist && npm publish",
     "ng": "ng",
     "start": "ng serve",
-    "build:prod": "ng build --prod",
+    "build:prod": "ng build",
+    "build:prod2": "ng build --prod",
+    "build:prod:no-aot": "ng build --prod --aot=false",
+    "build:prod:target": "ng build --target production --aot=false",
     "test": "ng test",
     "lint2": "ng lint",
     "e2e": "ng e2e"
@@ -43,7 +46,7 @@
     "admin-lte": "<2.4",
     "angular2-toaster": "^5.0.0",
     "bootstrap": "<4",
-    "core-js": "^2.5.3",
+    "core-js": "^2.4.1",
     "font-awesome": "<5",
     "ionicons": "<4",
     "jquery": "<4",
@@ -62,14 +65,14 @@
     "jasmine-core": "~3.1.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma-chrome-launcher": "~2.2.0",
-    "karma-coverage-istanbul-reporter": "^1.4.2",
-    "karma-jasmine-html-reporter": "^1.0.0",
-    "karma-jasmine": "~1.1.1",
+    "karma-coverage-istanbul-reporter": "^1.2.1",
+    "karma-jasmine-html-reporter": "^0.2.2",
+    "karma-jasmine": "~1.1.0",
     "karma": "~2.0.0",
     "ng-packagr": "^2.2.0",
-    "protractor": "~5.3.0",
-    "ts-node": "~5.0.1",
+    "protractor": "~5.1.2",
+    "ts-node": "~4.1.0",
     "tslint": "^5.9.1",
-    "typescript": "^2.7.2"
+    "typescript": "~2.5.3"
   }
 }
